@@ -3,7 +3,7 @@ FORCE:
 
 never-x86_64-unknown-linux-musl: FORCE
 	cargo build --target x86_64-unknown-linux-musl --release
-	cp target/x86_64-unknown-linux-musl/release/never $@
+	cp target/x86_64-unknown-linux-musl/release/never-app $@
 	strip $@
 
 .PHONY: docker-x86_64-unknown-linux-musl
