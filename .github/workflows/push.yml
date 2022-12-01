@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - README.md
+      - License
 
 env:
   REGISTRY: ghcr.io
@@ -17,6 +20,13 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - run: make never-x86_64-unknown-linux-musl
 
       - uses: actions/login-action@v2
         with:
